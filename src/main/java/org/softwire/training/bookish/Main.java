@@ -43,12 +43,9 @@ public class Main {
         // Use the "Book" class that we've created for you (in the models.database folder)
 
         Jdbi jdbi = Jdbi.create(connectionString);
-        List<Book> books = jdbi.withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM books ORDER BY BookID")
-                    .mapToBean(Book.class)
-                    .list();
-
-        });
+        List<Book> books = jdbi.withHandle(handle -> handle.createQuery("SELECT * FROM books ORDER BY BookID")
+                .mapToBean(Book.class)
+                .list());
 
         books.stream()
                 .forEach(book -> System.out.println(book.getAuthor()));
