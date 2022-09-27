@@ -1,0 +1,29 @@
+CREATE SCHEMA bookish;
+
+CREATE TABLE books (
+    BookID int,
+    Title varchar(100),
+    Author varchar(100),
+    ISBN varchar(50),
+    Category varchar(100),
+    Copies int
+)
+
+CREATE TABLE users (
+    userID int,
+    firstName varchar(100),
+    secondName varchar(100),
+    fees int,
+    PRIMARY KEY (userID)
+)
+
+CREATE TABLE transactions (
+    transactionID int,
+    userID int,
+    bookID int,
+    transactionDate TIMESTAMP,
+    due DATE,
+    PRIMARY KEY (transactionID),
+    FOREIGN KEY (userID) REFERENCES users(userID),
+    FOREIGN KEY (bookID) REFERENCES books(BookID)
+)
