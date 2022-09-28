@@ -7,7 +7,7 @@ public class Book {
     private String Author;
     private String ISBN;
     private String Category;
-    private int copies;
+    private int Copies;
 
     public Book() {}
 
@@ -52,10 +52,10 @@ public class Book {
     }
 
     public int getCopies() {
-        return copies;
+        return Copies;
     }
 
     public void setCopies(int copies) {
-        this.copies = copies;
+        this.Copies = copies;
     }
 }
