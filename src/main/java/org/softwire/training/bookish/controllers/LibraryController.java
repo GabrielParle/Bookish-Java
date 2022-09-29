@@ -19,6 +19,7 @@ import java.util.List;
 public class LibraryController {
 
     private final LibraryService libraryService;
+    private LibraryPageModel libraryPageModel = new LibraryPageModel();
 
     @Autowired
     public LibraryController(LibraryService libraryService) {
@@ -30,7 +31,6 @@ public class LibraryController {
 
         List<Book> allBooks = libraryService.getAllBooks();
 
-        LibraryPageModel libraryPageModel = new LibraryPageModel();
         libraryPageModel.setBooks(allBooks);
 
         return new ModelAndView("library", "model", libraryPageModel);
@@ -44,10 +44,33 @@ public class LibraryController {
         return new RedirectView("/library");
     }
 
-    @RequestMapping("/delete-book")
-    RedirectView deleteBook(@RequestParam int bookID) {
+    @RequestMapping("/open-editBar")
+    RedirectView openEditBook(@RequestParam int BookID) {
 
-        libraryService.deleteBook(bookID);
+        libraryPageModel.setBookInEdit(BookID);
+
+        return new RedirectView("/library");
+    }
+
+    @RequestMapping("/edit-book")
+    RedirectView editBook(@ModelAttribute Book book) {
+
+        libraryService.editBook(book);
+        libraryPageModel.setBookInEdit(0);
+
+        return new RedirectView("/library");
+    }
+    @RequestMapping("/cancel-edit")
+    RedirectView cancelEdit() {
+
+        libraryPageModel.cancelEdit();
+
+        return new RedirectView("/library");
+    }
+    @RequestMapping("/delete-book")
+    RedirectView deleteBook(@RequestParam int BookID) {
+
+        libraryService.deleteBook(BookID);
 
         return new RedirectView("/library");
     }

@@ -19,16 +19,27 @@
 
 <div class="container">
   <h2>Library</h2>
-  <div class="book-list">
+  <div class="book-table">
     <div class="column-list">
       <p>Title</p>
       <p>Author</p>
+      <p>Category</p>
+      <p>ISBN</p>
       <p>Copies</p>
     </div>
     <div th:each="book : ${model.books}" class="book">
-      <p><span th:text="${book.Title}"></span> </p>
-      <p><span th:text="${book.Author}"></span></p>
+      <p class="text"><span th:text="${book.Title}"></span> </p>
+      <p class="text"><span th:text="${book.Author}"></span></p>
+      <p class="text"><span th:text="${book.Category}"></span></p>
+      <p class="text"><span th:text="${book.ISBN}"></span></p>
       <p><span th:text="${book.Copies}"></span></p>
+      <div class="button-container">
+        <a th:href="${'/library/open-editBar?BookID=' + book.BookId}" class="button edit-button">Edit</a>
+        <a th:href="${'/library/delete-book?BookID=' + book.BookId}" class="button delete-button">Delete</a>
+      </div>
+      <tr th:if="${model.bookInEdit == book.BookId}">
+        <th:block th:replace="fragments/editbar :: editbar"></th:block>
+      </tr>
     </div>
   </div>
 
@@ -66,7 +77,7 @@
     </div>
     <div class="add-book-row">
       <span><!-- spacer --></span>
-      <input type="submit" value="Add book" />
+      <input type="submit" value="Add book" class="button submit-button"/>
     </div>
   </form>
 </div>
