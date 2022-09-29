@@ -23,8 +23,8 @@ public class TransactionService extends DatabaseService {
 
     public Book getbookInfoForID(Transaction transaction) {
         return jdbi.withHandle(handle ->
-                handle.createQuery("SELECT * FROM Books where bookID = :bookId")
-                        .bind( "bookId", transaction.getBookID())
+                handle.createQuery("SELECT * FROM Books where BookID = :BookID")
+                        .bind( "BookID", transaction.getBookID())
                         .mapToBean(Book.class)
                         .list()
                         .get(0)

@@ -13,7 +13,7 @@ public class LibraryPageModel {
 
     public void setBooks(List<Book> books) { this.books = books;}
 
-    public void setBookInEdit(int bookID) { this.bookInEdit = bookID;}
+    public void setBookInEdit(int BookID) { this.bookInEdit = BookID;}
 
     public int getBookInEdit() {return bookInEdit;}
 

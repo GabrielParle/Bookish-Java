@@ -6,7 +6,7 @@ public class Book  {
     private String Title;
     private String Author;
 
-    private int bookID;
+    private int BookID;
     private String ISBN;
     private String Category;
     private int Copies;
@@ -60,11 +60,11 @@ public class Book  {
     }
 
     public int getBookID() {
-        return bookID;
+        return BookID;
     }
 
-    public void setBookID(int bookID) {
-        this.bookID = bookID;
+    public void setBookID(int BookID) {
+        this.BookID = BookID;
 
     }
 }

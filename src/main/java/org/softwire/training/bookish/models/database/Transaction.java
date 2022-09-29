@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Transaction {
     private int userID;
-    private int bookID;
+    private int BookID;
     private Date dueDate;
     private Timestamp timeStamp;
     private boolean isReturned;
@@ -23,11 +23,11 @@ public class Transaction {
     }
 
     public int getBookID() {
-        return bookID;
+        return BookID;
     }
 
-    public void setBookID(int bookID) {
-        this.bookID = bookID;
+    public void setBookID(int BookID) {
+        this.BookID = BookID;
     }
 
     public Date getDueDate() {

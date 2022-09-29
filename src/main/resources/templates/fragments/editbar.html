@@ -5,7 +5,7 @@
 
 <div th:fragment="editbar" class="edit-bar-container">
     <form th:action="@{'library/edit-book'}" method="post">
-        <input type="hidden" name="BookId" th:value="${book.BookId}" aria-hidden="true">
+        <input type="hidden" name="BookID" th:value="${book.BookID}" aria-hidden="true">
         <label>
             <p>Title:</p>
             <input type="text" name="Title" th:value="${book.Title}">
