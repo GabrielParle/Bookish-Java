@@ -1,5 +1,6 @@
 package org.softwire.training.bookish.models.database;
 
+
 public class Book {
 
     private int BookId;
@@ -17,6 +18,16 @@ public class Book {
 
     public void setBookId(int bookId) {
         BookId = bookId;
+
+public class Book  {
+    public String Title;
+    public String Author;
+
+    private int bookID;
+
+    public Book() {
+
+
     }
 
     public String getTitle() {
@@ -34,6 +45,7 @@ public class Book {
     public void setAuthor(String author) {
         Author = author;
     }
+
 
     public String getISBN() {
         return ISBN;
@@ -57,5 +69,13 @@ public class Book {
 
     public void setCopies(int copies) {
         this.Copies = copies;
+
+    public int getBookID() {
+        return bookID;
+    }
+
+    public void setBookID(int bookID) {
+        this.bookID = bookID;
+
     }
 }

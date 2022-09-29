@@ -12,8 +12,12 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         String hostname = "localhost";
         String database = "bookish";
+
         String user = "root";
         String password = " ";
+=======
+        String user = "gparle";
+        String password = "gparle";
         String connectionString = "jdbc:mysql://" + hostname + "/" + database + "?user=" + user + "&password=" + password + "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT&useSSL=false";
 
         jdbcMethod(connectionString);
@@ -22,7 +26,7 @@ public class Main {
 
     private static void jdbcMethod(String connectionString) throws SQLException {
 
-        Connection connection = DriverManager.getConnection(connectionString);
+        Connection connection = DriverManager.getConnection(connectionString)
         String query = "select * from books";
         try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
@@ -32,6 +36,25 @@ public class Main {
             }
         }
 
+
+=======
+        String query = "SELECT * FROM bookish.Books";
+        try {
+            Statement stmt = connection.createStatement();
+
+        ResultSet rs = stmt.executeQuery(query);
+        System.out.println(rs);
+        while (rs.next()) {
+            String title = rs.getString("title");
+//            int supplierID = rs.getInt("SUP_ID");
+//            float price = rs.getFloat("PRICE");
+//            int sales = rs.getInt("SALES");
+//            int total = rs.getInt("TOTAL");
+            System.out.println(title);
+        }
+        }catch (SQLException e) {
+            System.out.println(e);
+        }
 
     }
 
@@ -47,8 +70,21 @@ public class Main {
                 .mapToBean(Book.class)
                 .list());
 
+
         books.stream()
                 .forEach(book -> System.out.println(book.getAuthor()));
+
+        List<Book> users = jdbi.withHandle(handle -> {
+
+            return handle.createQuery("SELECT * FROM bookish.Books")
+                    .mapToBean(Book.class)
+                    .list();
+        });
+
+        System.out.println(users.get(0).getAuthor());
+
+
+
 
     }
 }
