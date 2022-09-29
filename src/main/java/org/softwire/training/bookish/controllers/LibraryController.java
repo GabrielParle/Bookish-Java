@@ -19,7 +19,7 @@ import java.util.List;
 public class LibraryController {
 
     private final LibraryService libraryService;
-    private LibraryPageModel libraryPageModel = new LibraryPageModel();
+    private final LibraryPageModel libraryPageModel = new LibraryPageModel();
 
     @Autowired
     public LibraryController(LibraryService libraryService) {
@@ -36,10 +36,25 @@ public class LibraryController {
         return new ModelAndView("library", "model", libraryPageModel);
     }
 
+    @RequestMapping("/open-add-book")
+    RedirectView openAddBook() {
+        libraryPageModel.setAddBookActive(true);
+
+        return new RedirectView("/library");
+    }
+
+    @RequestMapping ("/cancel-add-book")
+    RedirectView cancelAddBook() {
+        libraryPageModel.setAddBookActive(false);
+
+        return new RedirectView("/library");
+    }
+
     @RequestMapping("/add-book")
     RedirectView addBook(@ModelAttribute Book book) {
 
         libraryService.addBook(book);
+        libraryPageModel.setAddBookActive(false);
 
         return new RedirectView("/library");
     }

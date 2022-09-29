@@ -26,7 +26,13 @@
       <p>Category</p>
       <p>ISBN</p>
       <p>Copies</p>
+      <div class="button-container">
+        <a th:href="${'library/open-add-book'}" class="button add-button">Add book</a>
+      </div>
     </div>
+    <tr th:if="${model.isAddBookActive()}">
+      <th:block th:replace="fragments/addbook :: addbook"></th:block>
+    </tr>
     <div th:each="book : ${model.books}" class="book">
       <p class="text"><span th:text="${book.getTitle()}"></span> </p>
       <p class="text"><span th:text="${book.getAuthor()}"></span></p>
@@ -42,44 +48,6 @@
       </tr>
     </div>
   </div>
-
-  <h2>Add a book:</h2>
-  <form th:action="@{/library/add-book}" method="post">
-    <div class="add-book-row">
-      <label>
-        <span>Title: </span>
-        <input type="text" name="Title">
-      </label>
-    </div>
-    <div class="add-book-row">
-      <label>
-        <span>Author: </span>
-        <input type="text" name="Author">
-      </label>
-    </div>
-    <div class="add-book-row">
-      <label>
-        <span>ISBN: </span>
-        <input type="text" name="ISBN">
-      </label>
-    </div>
-    <div class="add-book-row">
-      <label>
-        <span>Category: </span>
-        <input type="text" name="Category">
-      </label>
-    </div>
-    <div class="add-book-row">
-      <label>
-        <span>Copies: </span>
-        <input type="text" name="Copies">
-      </label>
-    </div>
-    <div class="add-book-row">
-      <span><!-- spacer --></span>
-      <input type="submit" value="Add book" class="button submit-button"/>
-    </div>
-  </form>
 </div>
 
 </body>

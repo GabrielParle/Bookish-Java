@@ -64,7 +64,7 @@ h2 {
     grid-template-columns: repeat(6, 1fr);
 }
 
-.edit-bar-container > form > label > input {
+input {
     width: 95%;
 }
 
@@ -86,6 +86,15 @@ h2 {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.add-button {
+    background-color: green;
+    color: white;
+}
+
+.add-button:hover {
+    opacity: 1;
 }
 
 .edit-button {
