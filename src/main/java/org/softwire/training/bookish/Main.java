@@ -12,6 +12,10 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         String hostname = "localhost";
         String database = "bookish";
+
+        String user = "root";
+        String password = " ";
+=======
         String user = "gparle";
         String password = "gparle";
         String connectionString = "jdbc:mysql://" + hostname + "/" + database + "?user=" + user + "&password=" + password + "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT&useSSL=false";
@@ -21,12 +25,19 @@ public class Main {
     }
 
     private static void jdbcMethod(String connectionString) throws SQLException {
-        System.out.println("JDBC method...");
 
-        // TODO: print out the details of all the books (using JDBC)
-        // See this page for details: https://docs.oracle.com/javase/tutorial/jdbc/basics/processingsqlstatements.html
+        Connection connection = DriverManager.getConnection(connectionString)
+        String query = "select * from books";
+        try (Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String title = resultSet.getString("Title");
+                System.out.println(title);
+            }
+        }
 
-        Connection connection = DriverManager.getConnection(connectionString);
+
+=======
         String query = "SELECT * FROM bookish.Books";
         try {
             Statement stmt = connection.createStatement();
@@ -44,16 +55,24 @@ public class Main {
         }catch (SQLException e) {
             System.out.println(e);
         }
+
     }
 
     private static void jdbiMethod(String connectionString) {
-        System.out.println("\nJDBI method...");
+
 
         // TODO: print out the details of all the books (using JDBI)
         // See this page for details: http://jdbi.org
         // Use the "Book" class that we've created for you (in the models.database folder)
 
         Jdbi jdbi = Jdbi.create(connectionString);
+        List<Book> books = jdbi.withHandle(handle -> handle.createQuery("SELECT * FROM books ORDER BY BookID")
+                .mapToBean(Book.class)
+                .list());
+
+
+        books.stream()
+                .forEach(book -> System.out.println(book.getAuthor()));
 
         List<Book> users = jdbi.withHandle(handle -> {
 
@@ -63,6 +82,7 @@ public class Main {
         });
 
         System.out.println(users.get(0).getAuthor());
+
 
 
 

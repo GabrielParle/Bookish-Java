@@ -2,6 +2,8 @@ package org.softwire.training.bookish.models.database;
 
 public class User {
 
+
+
     private int userID;
     private String firstName;
     private String lastName;
@@ -42,4 +44,5 @@ public class User {
     public void setFees(int fees) {
         this.fees = fees;
     }
+
 }

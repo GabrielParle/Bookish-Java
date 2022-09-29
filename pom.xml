@@ -8,6 +8,7 @@
     <artifactId>bookish</artifactId>
     <version>1.0</version>
 
+
     <!-- Include the Spring Boot parent pom -->
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -20,6 +21,10 @@
         <java.version>1.8</java.version>
         <thymeleaf.version>3.0.15.RELEASE</thymeleaf.version>
         <thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>
+        <bootstrap.version>5.2.0</bootstrap.version>
+        <webjars-locator.version>0.30</webjars-locator.version>
+        <lombok.version>1.18.2</lombok.version>
+        <commonmark.version>0.13.1</commonmark.version>
     </properties>
 
     <!-- Dependencies -->
@@ -47,7 +52,7 @@
         <dependency>
             <groupId>org.jdbi</groupId>
             <artifactId>jdbi3-core</artifactId>
-            <version>3.4.0</version>
+            <version>3.32.0</version>
         </dependency>
     </dependencies>
 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
+<div th:fragment="editbar" class="edit-bar-container">
+    <form th:action="@{'library/edit-book'}" method="post">
+        <input type="hidden" name="BookId" th:value="${book.BookId}" aria-hidden="true">
+        <label>
+            <p>Title:</p>
+            <input type="text" name="Title" th:value="${book.Title}">
+        </label>
+        <label>
+            <p>Author:</p>
+            <input type="text" name="Author" th:value="${book.Author}">
+        </label>
+        <label>
+            <p>Category:</p>
+            <input type="text" name="Category" th:value="${book.Category}">
+        </label>
+        <label>
+            <p>ISBN:</p>
+            <input type="text" name="ISBN" th:value="${book.ISBN}">
+        </label>
+        <label>
+            <p>Copies:</p>
+            <input type="text" name="Copies" th:value="${book.Copies}">
+        </label>
+        <div class="button-container">
+            <input type="submit" value="Submit" class="button submit-button">
+            <a th:href="${'/library/cancel-edit'}" class="button cancel-button">Cancel</a>
+        </div>
+    </form>
+</div>
+
+
+
+</html>
