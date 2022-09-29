@@ -1,6 +1,7 @@
 package org.softwire.training.bookish;
 
 import org.jdbi.v3.core.Jdbi;
+import org.softwire.training.bookish.models.database.Book;
 
 import java.sql.*;
 import java.util.List;
