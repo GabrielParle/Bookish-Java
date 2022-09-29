@@ -31,7 +31,7 @@ public class LibraryService extends DatabaseService {
     public void editBook(Book book) {
         jdbi.useHandle(handle ->
                 handle.createUpdate("UPDATE books SET Title = :Title, Author = :Author, Category = :Category, Copies = :Copies WHERE BookID = :BookID")
-                        .bind("BookID", book.getBookId())
+                        .bind("BookID", book.getBookID())
                         .bind("Title", book.getTitle())
                         .bind("Author", book.getAuthor())
                         .bind("Category", book.getCategory())

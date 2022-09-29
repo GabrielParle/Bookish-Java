@@ -13,9 +13,7 @@ public class Main {
         String hostname = "localhost";
         String database = "bookish";
 
-        String user = "root";
-        String password = " ";
-=======
+
         String user = "gparle";
         String password = "gparle";
         String connectionString = "jdbc:mysql://" + hostname + "/" + database + "?user=" + user + "&password=" + password + "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT&useSSL=false";
@@ -26,7 +24,7 @@ public class Main {
 
     private static void jdbcMethod(String connectionString) throws SQLException {
 
-        Connection connection = DriverManager.getConnection(connectionString)
+        Connection connection = DriverManager.getConnection(connectionString);
         String query = "select * from books";
         try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
@@ -37,8 +35,7 @@ public class Main {
         }
 
 
-=======
-        String query = "SELECT * FROM bookish.Books";
+        query = "SELECT * FROM bookish.Books";
         try {
             Statement stmt = connection.createStatement();
 
